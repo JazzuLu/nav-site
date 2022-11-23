@@ -15,6 +15,7 @@ jobs:
           node-version: 14
       - name: 打包镜像, 上传 Docker Hub
         run: |
+          echo "secrets:" ${{ secrets.DOCKER_USERNAME }}
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t bpmn-camunda-image  .
           docker tag bpmn-camunda-image ${{ secrets.DOCKER_REPOSITORY }}
