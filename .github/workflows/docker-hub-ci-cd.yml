@@ -3,7 +3,7 @@ name: CI/CD
 on: [push] # 执行时机
 # 任务
 jobs:
-  test:
+  build:
     # 运行的环境
     runs-on: ubuntu-latest
     # 步骤
@@ -28,5 +28,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
+          # 第一次执行不设置这三个，或者手动先执行一遍
+            docker stop bpmn-camunda
+            docker rm bpmn-camunda
+            docker rmi ${{ secrets.DOCKER_REPOSITORY }}:latest
+          # 第一次执行不设置这三个，或者手动先执行一遍
             docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
             docker run -d -p 10001:80 --name bpmn-camunda ${{ secrets.DOCKER_REPOSITORY }}:latest
