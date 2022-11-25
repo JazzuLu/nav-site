@@ -9,3 +9,7 @@ FROM nginx
 RUN mkdir /app
 COPY --from=0 /app/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
+
+
+# 添加目录可访问权限
+RUN chmod -R 755 /app
