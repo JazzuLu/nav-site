@@ -19,10 +19,6 @@ jobs:
           docker tag bpmn-camunda-image ${{ secrets.DOCKER_REPOSITORY }}
           docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
 
-  # Deployment job
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
       - name: 登录服务器, 执行脚本
         uses: appleboy/ssh-action@master
         with:
