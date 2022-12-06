@@ -30,4 +30,4 @@ jobs:
             docker rm bpmn-camunda
             docker rmi ${{ secrets.DOCKER_REPOSITORY }}:latest
             docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
-            docker run -d -p 3001:3001 --name bpmn-camunda ${{ secrets.DOCKER_REPOSITORY }}:latest
+            docker run -d -p 3000:3000 --name bpmn-camunda ${{ secrets.DOCKER_REPOSITORY }}:latest
