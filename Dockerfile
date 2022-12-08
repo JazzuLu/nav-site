@@ -17,3 +17,6 @@ ENV NUXT_PORT=3000
 
 CMD [ "npm", "start" ]
 
+FROM nginx
+WORKDIR /var/www/dockerize-nuxt/nuxt-app
+COPY nginx.conf /etc/nginx/nginx.conf
