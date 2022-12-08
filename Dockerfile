@@ -1,6 +1,6 @@
 FROM node:16
-RUN mkdir -p /nuxt-app
-WORKDIR /nuxt-app
+RUN mkdir -p /var/www/dockerize-nuxt/nuxt-app
+WORKDIR /var/www/dockerize-nuxt/nuxt-app
 
 COPY package*.json ./
 RUN npm install
@@ -9,14 +9,14 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 81
+EXPOSE 3001
 
 ENV NUXT_HOST=0.0.0.0
 
-ENV NUXT_PORT=81
+ENV NUXT_PORT=3001
 
 CMD [ "npm", "start" ]
 
 FROM nginx
-WORKDIR /nuxt-app
+WORKDIR /var/www/dockerize-nuxt/nuxt-app
 COPY nginx.conf /etc/nginx/nginx.conf
