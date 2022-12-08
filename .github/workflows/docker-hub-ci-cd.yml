@@ -1,33 +1,22 @@
-name: CI/CD
-# 触发条件为 push
-on: [push] # 执行时机
-# 任务
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
 jobs:
-  # Build job
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # git pull
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "16"
-      - name: 打包镜像, 上传 Docker Hub
-        run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t bpmn-camunda-image  .
-          docker tag bpmn-camunda-image ${{ secrets.DOCKER_REPOSITORY }}
-          docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
-
-      - name: 登录服务器, 执行脚本
+      - uses: actions/checkout@v1
+      - name: Setup SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            docker stop bpmn-camunda
-            docker rm bpmn-camunda
-            docker rmi ${{ secrets.DOCKER_REPOSITORY }}:latest
-            docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
-            docker run -d -p 3001:3001 --name bpmn-camunda ${{ secrets.DOCKER_REPOSITORY }}:latest
+            cd /data/docker/project
+            git pull
+            docker-compose up -d --build
