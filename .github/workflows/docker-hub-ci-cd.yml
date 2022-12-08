@@ -17,7 +17,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
+            rm -rf /data/docker/project/navsite/*
             cd /data/docker/project/navsite
-            wget https://github.com/JazzuLu/nav-site/archive/refs/heads/master.zip -O master.tgz
-            tar zxvf master.tgz
+            wget https://github.com/JazzuLu/nav-site/archive/refs/heads/master.zip -O master.zip
+            unzip master.zip
             docker-compose up -d --build
