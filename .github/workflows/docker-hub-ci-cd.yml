@@ -19,8 +19,9 @@ jobs:
           script: |
             rm -rf /data/docker/project/nav-site-master
             cd /data/docker/project
-            wget https://github.com/JazzuLu/nav-site/archive/refs/heads/master.zip -O master.zip
-            unzip master.zip
-            rm -rf master.zip
+            git clone https://github.com/JazzuLu/nav-site.git
             cd /nav-site-master
+
+            docker stop nav-site-master_app
+            docker rm nav-site-master_app
             docker-compose up -d --build
