@@ -20,6 +20,6 @@ jobs:
             rm -rf /data/docker/project/nav-site
             cd /data/docker/project
             git clone https://github.com/JazzuLu/nav-site.git
-            cd /nav-site
+            cd nav-site
 
             docker-compose up -d --build
