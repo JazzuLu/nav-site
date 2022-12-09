@@ -22,4 +22,4 @@ jobs:
             git clone https://github.com/JazzuLu/nav-site.git
             cd nav-site
 
-            docker-compose up -d --build
+            docker-compose up -p nav-site -d --build
