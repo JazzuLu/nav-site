@@ -19,4 +19,5 @@ RUN pnpm run build
 EXPOSE 3000
 
 # CMD [ "pm2-runtime", "start", "ecosystem.config.js" ]
-CMD [ "node" , ".output/server/index.mjs" ]
+# CMD [ "node" , ".output/server/index.mjs" ]
+CMD ["npm","run","dev"]
