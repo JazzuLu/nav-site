@@ -8,6 +8,9 @@ export default defineNuxtConfig({
         '@/assets/css/main.scss'
     ],
     vite:{
+        server:{
+            https: true,
+        },
         css:{
             preprocessorOptions:{
                 scss:{
