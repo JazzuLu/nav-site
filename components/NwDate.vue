@@ -1,38 +1,9 @@
 <script lang="ts" setup>
-import { Solar, Lunar } from 'lunar-typescript'
+import { useLunarDate, useTime } from '~~/composables/utils'
 
-const nwTime = ref<{ time: string, timer: NodeJS.Timer | null }>({
-  time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-  timer: null
-});
-const nwDate = ref({
-  solarDate: '',
-  week: '',
-  lunarDate: '',
-});
+const nwTime = useTime();
+const nwDate = useLunarDate();
 
-onMounted(() => {
-  getDate();
-  getTime();
-  // getWeather();
-});
-
-const getDate = () => {
-  let solar = Solar.fromDate(new Date());
-  let lunar = Lunar.fromDate(new Date());
-
-  nwDate.value = {
-    solarDate: `${solar.getMonth()}月${solar.getDay()}日`,
-    lunarDate: `${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`,
-    week: `星期${lunar.getWeekInChinese()}`,
-  }
-}
-
-const getTime = () => {
-  nwTime.value.timer = setInterval(() => {
-    nwTime.value.time = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  }, 1000)
-}
 const getWeather = () => {
   navigator.geolocation.getCurrentPosition((position) => {
     let lat = position.coords.latitude;
@@ -43,12 +14,11 @@ const getWeather = () => {
   })
 }
 
-
 </script>
 
 <template>
   <div class="nw_date_content">
-    <div class="nw_time"> {{ nwTime.time }} </div>
+    <div class="nw_time"> {{nwTime.time}} </div>
     <div class="nw_bottom">
       <div class="nw_date">
         <span class="nw_time_solar">{{ nwDate.solarDate }}{{ nwDate.week }}</span>
@@ -72,7 +42,7 @@ const getWeather = () => {
   .nw_time {
     font-size: rem(90);
   }
-  
+
   .nw_time_solar {
     margin-right: rem(10);
   }
