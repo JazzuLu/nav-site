@@ -1,14 +1,18 @@
 lockfileVersion: 5.4
 
 specifiers:
-  lunar-typescript: ^1.2.27
+  '@types/lodash': ^4.14.191
+  lodash: ^4.17.21
+  lunar-javascript: ^1.2.37
   nuxt: 3.0.0
   sass: ^1.56.2
   sass-loader: ^13.2.0
   webpack: ^5.75.0
 
 dependencies:
-  lunar-typescript: registry.npmmirror.com/lunar-typescript/1.2.27
+  '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.191
+  lodash: registry.npmmirror.com/lodash/4.17.21
+  lunar-javascript: registry.npmmirror.com/lunar-javascript/1.2.37
 
 devDependencies:
   nuxt: registry.npmmirror.com/nuxt/3.0.0_sass@1.56.2
@@ -954,6 +958,12 @@ packages:
     name: '@types/json-schema'
     version: 7.0.11
     dev: true
+
+  registry.npmmirror.com/@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.191.tgz}
+    name: '@types/lodash'
+    version: 4.14.191
+    dev: false
 
   registry.npmmirror.com/@types/node/18.11.14:
     resolution: {integrity: sha512-0KXV57tENYmmJMl+FekeW9V3O/rlcqGQQJ/hNh9r8pKIj304pskWuEd8fCyNT86g/TpO0gcOTiLzsHLEURFMIQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-18.11.14.tgz}
@@ -3728,7 +3738,6 @@ packages:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz}
     name: lodash
     version: 4.17.21
-    dev: true
 
   registry.npmmirror.com/log-symbols/5.1.0:
     resolution: {integrity: sha512-l0x2DvrW294C9uDCoQe1VSU4gf529FkSZ6leBl4TiqZH/e+0R7hSfHQBNut2mNygDgHwvYHfFLn6Oxb3VWj2rA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/log-symbols/-/log-symbols-5.1.0.tgz}
@@ -3749,10 +3758,10 @@ packages:
       yallist: registry.npmmirror.com/yallist/4.0.0
     dev: true
 
-  registry.npmmirror.com/lunar-typescript/1.2.27:
-    resolution: {integrity: sha512-ViYL0fyaeJypGyLkzzrw4TgMcpIA2+cj8zmKt8WJicDF/d7v76TLImPQWIMVx544aVdymkwEjZ3OLGBZosPtDw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lunar-typescript/-/lunar-typescript-1.2.27.tgz}
-    name: lunar-typescript
-    version: 1.2.27
+  registry.npmmirror.com/lunar-javascript/1.2.37:
+    resolution: {integrity: sha512-zMUUhWjUk8vpIZoirceL0gAtKq4JJR2pTPjOzQmIyD6aLwvWaPCvT+NaNma7OsjltLxkTFz9zdYRyOo8TulAAg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lunar-javascript/-/lunar-javascript-1.2.37.tgz}
+    name: lunar-javascript
+    version: 1.2.37
     dev: false
 
   registry.npmmirror.com/magic-string/0.25.9:

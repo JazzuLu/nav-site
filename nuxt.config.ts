@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     ],
     vite:{
         server:{
-            https: true,
+            https: false,
         },
         css:{
             preprocessorOptions:{
