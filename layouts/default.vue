@@ -2,7 +2,9 @@
     <div class="nw_app">
         <div class="nw_sidebar"></div>
         <div class="nw_content">
-            <NuxtPage />
+            <ClientOnly>
+                <NuxtPage />
+            </ClientOnly>
         </div>
         <div class="nw_footer"></div>
     </div>
