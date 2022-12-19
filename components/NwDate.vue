@@ -7,9 +7,7 @@ const weather = ref();
 
 const getWeather = async () => {
   let geo = await getGeoLocation();
-  console.log('geo',geo)
   weather.value = await $fetch('/api/others/weather', { method: 'get', params: { location: geo.coords } });
-  console.log('geo',weather)
 }
 onMounted(()=>{
   getWeather();
@@ -30,7 +28,7 @@ onMounted(()=>{
         <div class="nv_divder"></div>
         <div class="nw_weather">
           <i :class="`qi-${weather?.icon}-fill`"></i>
-          <span>2℃</span>
+          <span>{{weather?.temp}}℃</span>
         </div>
       </div>
     </div>

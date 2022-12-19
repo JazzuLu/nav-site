@@ -30,8 +30,8 @@ export default defineEventHandler(async (event) => {
   let query = getQuery(event);
   let url = `https://geoapi.qweather.com/v2/city/lookup?location=${query?.location}&key=${getQweatherKey()}`;
   let location:IGeoLocation = await $fetch(url);
-  location.location.forEach((item)=>{
+  location?.location?.forEach((item)=>{
     item.coords = `${item.lon},${item.lat}`;
   })
-  return location.location;
+  return location?.location;
 })

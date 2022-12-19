@@ -40,6 +40,7 @@ function getGeoByNavigator() {
       resolve(geo);
     }, (e) => {
       reject('未获取到位置信息');
+      console.warn('未获取到位置信息')
     })
   })
 }
@@ -48,10 +49,14 @@ export const getGeoLocation = async () => {
   if (process.client) {
     const storageLoaction = JSON.parse(localStorage.getItem("geoCoords") ?? '{}');
     if (isEmpty(storageLoaction)) {
-      let geo = await getGeoByNavigator();
-      let data = await $fetch('/api/others/location', { query: { location: geo } });
-      let value = data.length ? data[0] : DefaultGeo
-      localStorage.setItem('geoCoords', JSON.stringify(value));
+      try{
+        let geo = await getGeoByNavigator();
+        let data = await $fetch('/api/others/location', { query: { location: geo } });
+        let value = data.length ? data[0] : DefaultGeo
+        localStorage.setItem('geoCoords', JSON.stringify(value));
+      }catch(e){
+        localStorage.setItem('geoCoords', JSON.stringify(DefaultGeo));
+      }
     } else {
       geoCoords = storageLoaction;
     }
