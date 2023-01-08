@@ -63,3 +63,17 @@ export const getGeoLocation = async () => {
   }
   return geoCoords;
 }
+
+export const getCurrentTime = (showSeconds?:Boolean) => {
+  const now = new Date();
+  let hours = now.getHours().toString();
+  let minutes = now.getMinutes().toString();
+  let seconds = now.getSeconds().toString();
+
+  // 补位
+  hours = hours.padStart(2, '0');
+  minutes = minutes.padStart(2, '0');
+  seconds = seconds.padStart(2, '0');
+
+  return showSeconds ? `${hours}:${minutes}:${seconds}` : `${hours}:${minutes}`;
+}

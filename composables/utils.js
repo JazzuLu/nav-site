@@ -19,9 +19,15 @@ export const useLunarDate = () => {
 export const useTime = () => {
 
   const nwTime = ref({
-    time: new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" }),
+    time: getCurrentTime(),
     timer: null
   });
+
+  const getTime = () => {
+    nwTime.value.timer = setInterval(() => {
+      nwTime.value.time = getCurrentTime();
+    }, 1000)
+  };
 
   onMounted(() => {
     getTime();
@@ -30,12 +36,5 @@ export const useTime = () => {
     clearInterval(nwTime.timer)
   });
 
-  const getTime = () => {
-
-    nwTime.value.timer = setInterval(() => {
-      nwTime.value.time = new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" });
-    }, 1000)
-  }
-
-  return nwTime
+  return nwTime;
 }
