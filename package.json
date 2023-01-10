@@ -17,6 +17,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.191",
     "lodash": "^4.17.21",
-    "lunar-javascript": "^1.2.37"
+    "lunar-javascript": "^1.2.37",
+    "swiper": "^8.4.5"
   }
 }
