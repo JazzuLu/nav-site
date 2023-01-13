@@ -13,13 +13,27 @@ const clickIcon = async (item: iItem) => {
   // await navigateTo(item.link, { external: true });
   window.open(item.link, "_blank");
 };
+
+const menuItems = ref([
+  { name: "Option 1", callback: () => console.log("Option 1 clicked") },
+  { name: "Option 2", callback: () => console.log("Option 2 clicked") },
+  { name: "Option 3", callback: () => console.log("Option 3 clicked") },
+]);
 </script>
 
 <template>
   <div class="nwg_item" :title="item.description">
-    <div class="nwg_icon" @click="clickIcon(item)">
-      <img :src="item.icon" alt="" />
-    </div>
+    <RightMenu :menu-items="menuItems">
+      <template v-slot:default>
+        <div class="nwg_icon" @click="clickIcon(item)">
+          <img :src="item.icon" alt="" />
+        </div>
+      </template>
+      <template v-slot:menu="{ item }">
+        <div @click="item.callback()">{{ item.name }}</div>
+      </template>
+    </RightMenu>
+
     <div class="nwg_name">
       {{ item.name }}
     </div>
@@ -28,9 +42,10 @@ const clickIcon = async (item: iItem) => {
 
 <style lang="scss">
 .nwg_item {
-  width: rem(60);
-  height: rem(60);
-  padding: rem(15) rem(15) rem(30);
+  width: rem(60px);
+  height: rem(60px);
+  padding: rem(15px) rem(15px) rem(30px);
+
   .nwg_icon {
     width: 100%;
     height: 100%;
@@ -39,6 +54,7 @@ const clickIcon = async (item: iItem) => {
     box-shadow: 0 0 5px #0000001a;
     transition: 0.2s;
     cursor: pointer;
+
     img {
       display: block;
       object-fit: var(--icon-size, cover);
@@ -49,6 +65,7 @@ const clickIcon = async (item: iItem) => {
       background-color: var(--icon-bg-color, #fff);
     }
   }
+
   .nwg_name {
     width: calc(100% + var(--icon-gap-y));
     margin-left: calc(var(--icon-gap-y) / 2 * -1);
