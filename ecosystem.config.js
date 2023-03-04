@@ -1,10 +1,13 @@
 module.exports = {
     apps: [
       {
-        name: 'NuxtAppName',
+        name: 'NavSite',
         exec_mode: 'cluster',
         instances: 'max',
-        script: './.output/server/index.mjs'
+        script: './.output/server/index.mjs',
+        env: {
+          PORT: 3000
+        }
       }
     ]
   }
