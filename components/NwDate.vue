@@ -25,7 +25,7 @@ onMounted(()=>{
           <span class="nw_time_solar">{{ nwDate.solarDate }}{{ nwDate.week }}</span>
           <span class="nw_time_lunar">{{ nwDate.lunarDate }}</span>
         </div>
-        <div class="nv_divder"></div>
+        <div class="nv_divider"></div>
         <div class="nw_weather">
           <i :class="`qi-${weather?.icon}-fill`"></i>
           <span>{{weather?.temp}}℃</span>
@@ -42,7 +42,7 @@ onMounted(()=>{
   flex-direction: column;
   color: #fff;
   .nw_time {
-    font-size: rem(90);
+    font-size: rem(90px);
   }
   .nw_bottom {
 
@@ -50,21 +50,21 @@ onMounted(()=>{
     align-items: center;
 
     .nw_time_solar {
-      margin-right: rem(10);
+      margin-right: rem(10px);
     }
 
-    .nv_divder {
-      width: rem(2);
-      height: rem(14);
+    .nv_divider {
+      width: rem(2px);
+      height: rem(14px);
       background-color: #fff;
-      margin-top: rem(2);
-      margin-left: rem(10);
+      margin-top: rem(2px);
+      margin-left: rem(10px);
     }
     .nw_weather {
-      margin-left: rem(10);
+      margin-left: rem(10px);
       i{
-        margin-right: rem(5);
-        font-size: rem(18);
+        margin-right: rem(5px);
+        font-size: rem(18px);
       }
     }
   }

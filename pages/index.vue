@@ -1,6 +1,8 @@
 <template>
   <div class="nv_content">
     <div style="padding-top: 6vh"><NwDate/></div>
+    <GridLayout />
+
   </div>
 </template>
 

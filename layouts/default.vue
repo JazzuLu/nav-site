@@ -4,7 +4,6 @@
     <div class="nw_content">
       <ClientOnly>
         <NuxtPage />
-        <GridLayout />
       </ClientOnly>
     </div>
     <div class="nw_footer"></div>
